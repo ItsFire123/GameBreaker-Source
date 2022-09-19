@@ -1,0 +1,187 @@
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Gamebreaker";
+    Text = "Wait 5 Seconds"; -- what the text says (ofc)
+    Duration = 5;
+})
+wait(5)
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Unknownuser11736/suntaiteam/main/kavouilibrary/fixedsliders"))()
+local Window = Library.CreateLib("Gamebreaker | Arsenal | V1.4", "Synapse")
+
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local NewGB = Instance.new("ScreenGui")
+local Watermark = Instance.new("ImageLabel")
+local HIDE = Instance.new("TextButton")
+local NOTE = Instance.new("TextLabel")
+local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
+NewGB.ResetOnSpawn = false
+
+--Properties:
+
+NewGB.Name = "NewGB"
+NewGB.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Watermark.Name = "Watermark"
+Watermark.Parent = NewGB
+Watermark.BackgroundColor3 = Color3.fromRGB(255, 34, 37)
+Watermark.BackgroundTransparency = 1.000
+Watermark.Position = UDim2.new(0.0431832187, 0, 0.0734394118, 0)
+Watermark.Size = UDim2.new(0.0616903156, 0, 0.122399017, 0)
+Watermark.Image = "rbxassetid://3570695787"
+Watermark.ImageColor3 = Color3.fromRGB(50, 76, 191)
+Watermark.ScaleType = Enum.ScaleType.Slice
+Watermark.SliceCenter = Rect.new(100, 100, 100, 100)
+Watermark.SliceScale = 0.120
+
+HIDE.Name = "HIDE"
+HIDE.Parent = Watermark
+HIDE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HIDE.BackgroundTransparency = 1.000
+HIDE.Position = UDim2.new(0, 0, 0.239999995, 0)
+HIDE.Size = UDim2.new(1, 0, 0.5, 0)
+HIDE.Font = Enum.Font.SciFi
+HIDE.Text = "Hide GUI"
+HIDE.TextColor3 = Color3.fromRGB(0, 0, 0)
+HIDE.TextScaled = true
+HIDE.TextSize = 10.000
+HIDE.TextWrapped = true
+HIDE.MouseButton1Down:Connect(function()
+    Library:ToggleUI()
+end)
+
+local Tab = Window:NewTab("Main")
+local Tab1Section = Tab:NewSection("Main")
+
+local Tab2 = Window:NewTab("Guns")
+local Tab2Section = Tab2:NewSection("Gun Mod")
+
+Tab1Section:NewButton("Noclip" , "Noclip",function()
+    local message = Instance.new("Message",game.Workspace)
+    message.Text = 'Noclip Activated! By Gamebreaker'
+    wait(2)
+    message:Destroy()
+    wait(1)
+    local noclip = true char = game.Players.LocalPlayer.Character while true do if noclip == true then for _,v in pairs(char:children()) do pcall(function() if v.className == "Part" then v.CanCollide = false elseif v.ClassName == "Model" then v.Head.CanCollide = false end end) end end game:service("RunService").Stepped:wait() end
+end)
+
+Tab1Section:NewButton("Invisible" , "Invisible",function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/Cesare0328/my-scripts/main/arsenal%20updated%20invis.lua'),true))()
+end)
+
+
+Tab2Section:NewButton("RGB Gun" , "RGB Gun",function()
+    local c = 1 function zigzag(X)  return math.acos(math.cos(X * math.pi)) / math.pi end game:GetService("RunService").RenderStepped:Connect(function()  if game.Workspace.Camera:FindFirstChild('Arms') then   for i,v in pairs(game.Workspace.Camera.Arms:GetDescendants()) do    if v.ClassName == 'MeshPart' then      v.Color = Color3.fromHSV(zigzag(c),1,1)     c = c + .0001    end   end  end end)    
+end)
+Tab2Section:NewButton("Fast Fire" , "Fast Fire",function()
+    local replicationstorage = game.ReplicatedStorage
+
+for i, v in pairs(replicationstorage.Weapons:GetDescendants()) do
+   if v.Name == "Auto" then
+       v.Value = true
+   end
+   if v.Name == "RecoilControl" then
+       v.Value = 0
+   end
+   if v.Name == "MaxSpread" then
+       v.Value = 0
+   end
+   if v.Name == "ReloadTime" then
+      v.Value = 0.1
+   end
+   if v.Name == "FireRate" then
+       v.Value = 0.05
+   end
+   if v.Name == "Crit" then
+       v.Value = 20
+   end
+end
+wait(1)
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Activated!";
+    Text = "fast fire,fast knife,fast reload loaded!"; -- what the text says (ofc)
+    Duration = 10;
+})
+end)
+
+
+Tab2Section:NewButton("Shoot Straight" , "No Spread",function()
+    local replicationstorage = game.ReplicatedStorage
+
+for i, v in pairs(replicationstorage.Weapons:GetDescendants()) do
+   
+   if v.Name == "MaxSpread" then
+       v.Value = 0
+   end
+end
+end)
+
+Tab2Section:NewButton("Silent Aim" , "Silent Aim",function()
+    function getplrsname() for i,v in pairs(game:GetChildren()) do if v.ClassName == "Players" then return v.Name end end end local players = getplrsname() local plr = game[players].LocalPlayer coroutine.resume(coroutine.create(function() while wait(1) do coroutine.resume(coroutine.create(function() for _,v in pairs(game[players]:GetPlayers()) do if v.Name ~= plr.Name and v.Character then v.Character.RightUpperLeg.CanCollide = false v.Character.RightUpperLeg.Transparency = 10 v.Character.RightUpperLeg.Size = Vector3.new(21,21,21) v.Character.LeftUpperLeg.CanCollide = false v.Character.LeftUpperLeg.Transparency = 10 v.Character.LeftUpperLeg.Size = Vector3.new(21,21,21) v.Character.HeadHB.CanCollide = false v.Character.HeadHB.Transparency = 10 v.Character.HeadHB.Size = Vector3.new(21,21,21) v.Character.HumanoidRootPart.CanCollide = false v.Character.HumanoidRootPart.Transparency = 10 v.Character.HumanoidRootPart.Size = Vector3.new(21,21,21) end end end)) end end))
+end)
+
+Tab1Section:NewButton("Expand Hitbox" , "Expand Hitbox",function()
+    function getplrsname() for i,v in pairs(game:GetChildren()) do if v.ClassName == "Players" then return v.Name end end end local players = getplrsname() local plr = game[players].LocalPlayer coroutine.resume(coroutine.create(function() while wait(1) do coroutine.resume(coroutine.create(function() for _,v in pairs(game[players]:GetPlayers()) do if v.Name ~= plr.Name and v.Character then v.Character.RightUpperLeg.CanCollide = false v.Character.RightUpperLeg.Transparency = 75 v.Character.RightUpperLeg.Size = Vector3.new(21,21,21) v.Character.LeftUpperLeg.CanCollide = false v.Character.LeftUpperLeg.Transparency = 75 v.Character.LeftUpperLeg.Size = Vector3.new(21,21,21) v.Character.HeadHB.CanCollide = false v.Character.HeadHB.Transparency = 75 v.Character.HeadHB.Size = Vector3.new(21,21,21) v.Character.HumanoidRootPart.CanCollide = false v.Character.HumanoidRootPart.Transparency = 75 v.Character.HumanoidRootPart.Size = Vector3.new(21,21,21) end end end)) end end))
+end)
+
+Tab1Section:NewToggle("ESP" , "ESP",function(state)
+      if state then
+    --Made by Andrheyplayz_officalyt
+local gui = Instance.new("BillboardGui");
+gui.Name = "";
+gui.AlwaysOnTop = true;
+gui.LightInfluence = 0;
+gui.Size = UDim2.new(1.75, 0, 1.75, 0);
+local frame = Instance.new("Frame", gui);
+frame.BackgroundColor3 = Color3.fromRGB(170, 0, 0);
+frame.Size = UDim2.new(1, 0, 1, 0);
+frame.BorderSizePixel = 4;
+frame.BorderColor3 = Color3.fromRGB(0, 0, 0);
+local gi = gui:Clone();
+local body = frame:Clone();
+body.Parent = gi;
+body.BackgroundColor3 = Color3.fromRGB(0, 170, 170);
+
+for _, v in pairs(game:GetService("Players"):GetPlayers()) do
+    if v.Name ~= game:GetService("Players").LocalPlayer.Name and v.Character and v.Character:FindFirstChild("Head") then
+        gui:Clone().Parent = v.Character.Head;
+    end
+end
+end
+end)
+
+Tab2Section:NewButton("No Recoil" , "No Recoil",function()
+    local replicationstorage = game.ReplicatedStorage
+
+for i, v in pairs(replicationstorage.Weapons:GetDescendants()) do
+   if v.Name == "RecoilControl" then
+       v.Value = 0
+   end
+end
+end)
+
+Tab2Section:NewButton("Auto Crit" , "Crit",function() 
+    local replicationstorage = game.ReplicatedStorage
+
+for i, v in pairs(replicationstorage.Weapons:GetDescendants()) do
+   if v.Name == "Crit" then
+       v.Value = 20
+   end
+end
+end)
+
+Tab2Section:NewButton("999 Ammo" , "999 Ammo",function()
+    game:GetService("RunService").Stepped:connect(
+    function()
+        pcall(
+            function()
+                    game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount.Value = 999
+                    game:GetService("Players").LocalPlayer.PlayerGui.GUI.Client.Variables.ammocount2.Value = 999
+                end) 
+            end)
+            end) 
+            
+
+
